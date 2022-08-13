@@ -3,25 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    description: 'Edit src/App.js and save to reload.',
+    counter: 0
+  };
 
-    // method bind
-    this.handleDescription = this.handleDescription.bind(this);
-
-    this.state = {
-      description: 'Edit src/App.js and save to reload.',
-      counter: 0
-    };
-  }
-
-  // método sintetico 
-  // com essa declaraçao é necessário usar um method bind
-  handleDescription () {
+  handleDescription = () => {
     this.setState({ description: 'Edite src/App.js e salve para recarregar.' });
   }
 
-  // com a declaração arrow function ele consegue ler o this e não é necessário o bind
   handleLink = (event) => {
     event.preventDefault();
     const { counter } = this.state;
