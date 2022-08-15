@@ -1,44 +1,39 @@
 import { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   state = {
-    description: 'Edit src/App.js and save to reload.',
-    counter: 0
+    posts: [
+      {
+        id: 1,
+        title: 'O titulo 1',
+        body: 'O corpo 1'
+      },
+      {
+        id: 2,
+        title: 'O titulo 2',
+        body: 'O corpo 2'
+      },
+      {
+        id: 3,
+        title: 'O titulo 3',
+        body: 'O corpo 3'
+      }
+    ]
   };
-
-  handleDescription = () => {
-    this.setState({ description: 'Edite src/App.js e salve para recarregar.' });
-  }
-
-  handleLink = (event) => {
-    event.preventDefault();
-    const { counter } = this.state;
-    this.setState({ counter: counter + 1 });
-  }
   
   render() {
-    const { description, counter } = this.state;
+    const { posts } = this.state;
 
     return (
       <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p onClick={this.handleDescription}>
-          {description}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={this.handleLink}
-        >
-          Learn React {counter}
-        </a>
-      </header>
-    </div>
+        {posts.map(post => (
+          <div key={post.id}>
+            <h1>{post.title}</h1>
+            <p>{post.body}</p>
+          </div>
+        ))}
+      </div>
     );
   };
 };
