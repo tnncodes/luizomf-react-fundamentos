@@ -3,65 +3,49 @@ import './App.css';
 
 class App extends Component {
   state = {
-    counter: 0,
-    posts: [
-      {
-        id: 1,
-        title: 'O titulo 1',
-        body: 'O corpo 1'
-      },
-      {
-        id: 2,
-        title: 'O titulo 2',
-        body: 'O corpo 2'
-      },
-      {
-        id: 3,
-        title: 'O titulo 3',
-        body: 'O corpo 3'
-      }
-    ]
+    posts: []
   };
 
-  timeoutUpdate = null;
-
-  // quando o componente é montado
   componentDidMount() {
-    this.handleTimeout();
+    this.loadPosts();
   }
 
-  // quando o componente é atualizado
-  componentDidUpdate() {
-    this.handleTimeout();
-  }
+  loadPosts = async () => {
+    const postsResponse = fetch(
+      'https://jsonplaceholder.typicode.com/posts'
+    );
+    const photosResponse = fetch(
+      'https://jsonplaceholder.typicode.com/photos'
+    );
+    
+    const [posts, photos] = await Promise.all([postsResponse, photosResponse]);
+    const postsJson = await posts.json();
+    const photosJson = await photos.json();
 
-  // quando o componente é desmontado
-  componentWillUnmount() {
-    clearTimeout(this.timeoutUpdate);
-  }
-  
-  handleTimeout = () => {
-    const { posts, counter } = this.state;
-    posts[0].title = 'O titulo mudou';
+    const postsAndPhotos = postsJson.map((posts, index) => {
+      return { ...posts, cover: photosJson[index].url };
+    })
 
-    this.timeoutUpdate = setTimeout(() => {
-      this.setState({ posts, counter: counter + 1 });
-    }, 5000);
-  }
+    this.setState({ posts: postsAndPhotos });
+  };
 
   render() {
-    const { posts, counter } = this.state;
+    const { posts } = this.state;
 
     return (
-      <div className="App">
-        <h1>{counter}</h1>
-        {posts.map(post => (
-          <div key={post.id}>
-            <h1>{post.title}</h1>
-            <p>{post.body}</p>
-          </div>
-        ))}
-      </div>
+      <section className='container'>
+        <div className='posts'>
+          {posts.map(post => (
+            <post className='post'>
+              <img src={post.cover} alt={post.title} />
+              <div className='post-content' key={post.id}>
+                <h1>{post.title}</h1>
+                <p>{post.body}</p>
+              </div>
+            </post>
+          ))}
+        </div>
+      </section>
     );
   };
 };
