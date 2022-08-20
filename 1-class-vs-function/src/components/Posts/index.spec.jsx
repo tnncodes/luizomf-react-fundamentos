@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from '@testing-library/react';
 import { Posts } from '.';
 
 const props = {
@@ -20,9 +20,9 @@ const props = {
       title: 'title 3',
       body: 'body 3',
       cover: 'img/img3.png',
-    }
-  ]
-}
+    },
+  ],
+};
 
 describe('<Posts />', () => {
   it('should render posts', () => {
@@ -34,6 +34,8 @@ describe('<Posts />', () => {
 
   it('should not render posts', () => {
     render(<Posts />);
-    expect(screen.queryAllByRole('heading', { name: /title/i })).toHaveLength(0);
+    expect(screen.queryAllByRole('heading', { name: /title/i })).toHaveLength(
+      0
+    );
   });
 });
