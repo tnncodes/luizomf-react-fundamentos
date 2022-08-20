@@ -153,7 +153,7 @@ describe('<Home />', () => {
       screen.getByRole('heading', { name: 'title 5' })
     ).toBeInTheDocument();
 
-    // espero que o botão esteja desabilitado
+    // espero que o botão esteja desabilitadoEsse
     expect(button).toBeDisabled();
   });
 });
