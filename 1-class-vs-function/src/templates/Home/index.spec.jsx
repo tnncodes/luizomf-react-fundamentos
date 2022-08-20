@@ -40,6 +40,13 @@ const handlers = [
           body: 'body 4',
           url: 'img4.jpg',
         },
+        {
+          id: 5,
+          userId: 5,
+          title: 'title 5',
+          body: 'body 5',
+          url: 'img5.jpg',
+        },
       ])
     );
   }),
@@ -61,7 +68,7 @@ describe('<Home />', () => {
     render(<Home />);
     await waitForElementToBeRemoved(screen.getByText('Não existem posts!'));
 
-    expect.assertions(3);
+    // xpect.assertions(3);
 
     // search
     expect(
@@ -129,5 +136,24 @@ describe('<Home />', () => {
     // ao pesquisar por um item que não existe deve retornar a mensagem Não existem posts!
     userEvent.type(search, 'lorem ipsum');
     expect(screen.getByText('Não existem posts!')).toBeInTheDocument();
+  });
+
+  it('should load more posts', async () => {
+    render(<Home />);
+
+    await waitForElementToBeRemoved(screen.getByText('Não existem posts!'));
+
+    const button = screen.getByRole('button', { name: /load more posts/i });
+
+    // clicando no botão
+    userEvent.click(button);
+
+    // espero que apareça na tela o item 5
+    expect(
+      screen.getByRole('heading', { name: 'title 5' })
+    ).toBeInTheDocument();
+
+    // espero que o botão esteja desabilitado
+    expect(button).toBeDisabled();
   });
 });
