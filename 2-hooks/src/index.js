@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { UseEffect } from './hooks/UseEffect';
+import { UseCallBack } from './hooks/UseCallBack';
 import './styles/global-styles.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UseEffect />
+    <UseCallBack />
   </React.StrictMode>
 );
