@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './hooks/useContext';
+import App from './hooks/useReducer/example-2';
 import './styles/global-styles.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
