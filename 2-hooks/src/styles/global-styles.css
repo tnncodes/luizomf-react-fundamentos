@@ -15,3 +15,27 @@ body {
 article + article {
   border-top: 1px dashed #ccc;
 }
+
+article {
+  padding: 16px 12px;
+}
+
+article h2 {
+  margin-bottom: 4px;
+}
+
+article h3 {
+  margin-bottom: 8px;
+}
+
+article p {
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+article button {
+  border: none;
+  padding: 12px;
+  width: 100px;
+  cursor: pointer;
+}

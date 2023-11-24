@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
 const eventFn = () => {
-  console.log('h2 clicado!');
+  console.log('btnEvent clicado!');
 };
 
-export const UseEffect = () => {
+function ExTwoUseEffect () {
   const [counter, setCounter] = useState(0);
 
   // componentDidUpdate: executa toda vez que o componente atualiza
@@ -24,20 +24,39 @@ export const UseEffect = () => {
 
   // componentWillUmount - limpeza
   useEffect(() => {
-    document.querySelector('h2')?.addEventListener('click', eventFn);
+    document.querySelector('.btnEvent')?.addEventListener('click', eventFn);
 
     //
     return () => {
-      document.querySelector('h2')?.addEventListener('click', eventFn);
+      document.querySelector('.btnEvent')?.removeEventListener('click', eventFn);
     };
   }, []);
 
   return (
-    <>
-      <h2>Contador: {counter}</h2>{' '}
-      <button type="button" onClick={() => setCounter(counter + 1)}>
-        button
+    <article className="exTwoUseEffect">
+      <h2>useEffect</h2>
+      <p>É um Hook que serve para lidar com os efeitos.</p>
+      <p>Podemos usá-los como os lifeCycles componentDidMount, componentDidUpdate e componentWillUnmount.</p>
+      
+      <h3>Exemplo:</h3>
+      <p>Contador: {counter}</p>
+      <button 
+        type="button" 
+        onClick={() => setCounter(counter + 1)}
+      >
+        +
       </button>
-    </>
+      {' '}
+      <button 
+        type="button" 
+        onClick={() => setCounter(counter - 1)}
+      >
+        -
+      </button>
+      {' '}
+      <button type='button' className='btnEvent'>?</button>
+    </article>
   );
 };
+
+export default ExTwoUseEffect;
