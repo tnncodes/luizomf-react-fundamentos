@@ -1,27 +1,29 @@
-import { useState } from 'react';
-import logo from './logo.svg';
-import './styles.css';
+import { useState } from "react";
+import "./styles.css";
 
-export const UseState = () => {
-  const [reverse, setReverse] = useState(false);
-  const [counter, setCounter] = useState(0);
-  const reverseClass = reverse ? 'reverse' : '';
+function ExOneUseState() {
+  const [status, setStatus] = useState(false);
 
   const handleClick = () => {
-    setReverse(!reverse);
-    // setCounter(counter + 1);
-
-    // setState com callBack
-    setCounter((prevCounter) => prevCounter + 1);
-  };
+    setStatus(!status);
+  }
 
   return (
-    <section className="container">
-      <h2>Cliques: {counter}</h2>
-      <img src={logo} alt="React logo" className={`logo ${reverseClass}`} />
-      <button className="button" type="button" onClick={handleClick}>
-        toggle
+    <article className="exOneUseState">
+      <h2>useState</h2>
+      <p>É um Hook que permite adicionar o state do React a um componente de função, como string, object, array, boolean, number, null.</p>
+      <p>Tem a mesma função do this.state em um antigo Class Componentes do React.</p>
+      <p>Pode-se definir seu valor passando um valor direto ou uma função que acessa seu valor atual e retornando um novo.</p>
+
+      <h3>Exemplo:</h3>
+      <button 
+        type="button" 
+        onClick={handleClick}
+      >
+        {status ? 'ON' : 'OFF'}
       </button>
-    </section>
-  );
-};
+    </article>
+  )
+}
+
+export default ExOneUseState;
