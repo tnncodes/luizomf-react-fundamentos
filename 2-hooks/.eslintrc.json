@@ -27,8 +27,11 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "react/prop-types": 0,
     "prettier/prettier": "warn",
     "react/react-in-jsx-scope": "off",
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0,
     "no-unused-vars": "warn",
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

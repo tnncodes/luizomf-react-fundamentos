@@ -21,10 +21,11 @@ article {
 }
 
 article h2 {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 article h3 {
+  margin-top: 16px;
   margin-bottom: 8px;
 }
 
@@ -38,4 +39,8 @@ article button {
   padding: 12px;
   width: 100px;
   cursor: pointer;
+}
+
+button + button {
+  margin-left: 4px;
 }

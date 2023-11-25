@@ -46,14 +46,12 @@ function ExTwoUseEffect () {
       >
         +
       </button>
-      {' '}
       <button 
         type="button" 
         onClick={() => setCounter(counter - 1)}
       >
         -
       </button>
-      {' '}
       <button type='button' className='btnEvent'>?</button>
     </article>
   );
